@@ -1,0 +1,8 @@
+baseURL = "https://javey-q.github.io/"
+languageCode = "en-us"
+title = "My's Blog"
+theme = "PaperMod"
+
+[params]
+  author = "Jiawei Qiu"
+  description = "A blog about ..."
