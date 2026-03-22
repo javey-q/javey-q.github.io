@@ -1,0 +1,39 @@
+body {
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+a {
+  color: #00bfa5;
+}
+
+/* 表格内「提速 / 加速比」等正向指标（深色主题可读） */
+.metric-speedup {
+  color: #15803d;
+  font-weight: 600;
+}
+
+html[data-theme="dark"] .metric-speedup {
+  color: #4ade80;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"] .metric-speedup {
+    color: #4ade80;
+  }
+}
+
+/* 相对 baseline 变慢（如 offload、多实例竞争） */
+.metric-slowdown {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+html[data-theme="dark"] .metric-slowdown {
+  color: #f87171;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"] .metric-slowdown {
+    color: #f87171;
+  }
+}
