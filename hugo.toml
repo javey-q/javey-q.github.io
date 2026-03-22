@@ -1,8 +1,110 @@
 baseURL = "https://javey-q.github.io/"
-languageCode = "en-us"
-title = "My's Blog"
+languageCode = "zh-cn"
+title = "Javey 的技术博客"
 theme = "PaperMod"
+copyright = "© Javey"
+
+enableInlineShortcodes = true
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableEmoji = true
+pygmentsUseClasses = true
+mainsections = ["posts", "papermod"]
+
+[minify]
+  disableXML = true
+
+[pagination]
+  disableAliases = false
+  pagerSize = 5
+
+[languages.zh-cn]
+  languageName = "简体中文"
+  weight = 1
+
+[[languages.zh-cn.menu.main]]
+  name = "标签"
+  url = "tags/"
+  weight = 10
+[[languages.zh-cn.menu.main]]
+  name = "分类"
+  url = "categories/"
+  weight = 10
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
 
 [params]
-  author = "Jiawei Qiu"
-  description = "A blog about ..."
+  env = "production"
+  author = "Javey"
+  description = "技术博客 | 记录与分享"
+  keywords = ["Hugo", "Blog", "PaperMod", "技术"]
+  defaultTheme = "auto"
+  ShowShareButtons = true
+  ShowReadingTime = true
+  displayFullLangName = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowRssButtonInSectionTermList = true
+  ShowAllPagesInArchive = true
+  ShowPageNums = true
+  ShowToc = true
+  images = ["images/papermod-cover.png"]
+
+  [params.profileMode]
+    enabled = true
+    title = "欢迎来到我的博客"
+    subtitle = "记录 | 分享 | 成长"
+    imageUrl = "images/avatar.jpg"
+    imageTitle = "头像"
+    [[params.profileMode.buttons]]
+      name = "博客文章"
+      url = "/posts"
+    [[params.profileMode.buttons]]
+      name = "关于"
+      url = "/about"
+    [[params.profileMode.buttons]]
+      name = "GitHub"
+      url = "https://github.com/javey-q"
+
+  [params.homeInfoParams]
+    Title = "欢迎来到 Javey 的博客"
+    Content = """
+    这里记录技术学习与思考。
+    技术沉淀 | 知识拓展 | 持续输出
+    """
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/javey-q"
+  [[params.socialIcons]]
+    name = "email"
+    url = "2572677758@qq.com"
+
+  [params.editPost]
+    URL = "https://github.com/javey-q/javey-q.github.io/tree/main/content"
+    Text = "建议修改"
+    appendFilePath = true
+
+  [params.assets]
+    disableHLJS = true
+
+  # 搜索页 Fuse.js 配置：threshold 越小匹配越严格，limit 为最大结果数
+  [params.fuseOpts]
+    threshold = 0.4
+    limit = 20
+    keys = ["title", "permalink", "summary", "content"]
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[services.instagram]
+  disableInlineCSS = true
+[services.x]
+  disableInlineCSS = true
