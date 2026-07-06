@@ -11,6 +11,9 @@
 # 编辑器与本地笔记
 /.obsidian/
 
+# 本地隔离开发工作区
+/.worktrees/
+
 # Office 临时文件
 ~$*
 *.tmp
