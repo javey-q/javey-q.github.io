@@ -4,7 +4,7 @@
 
 **Goal:** Build a Hugo standalone competition timeline page from `比赛记录.md`, with year-grouped cards, copied certificate images, public context supplements, and future link placeholders.
 
-**Architecture:** The feature is a static Hugo page at `content/competitions.md`, styled by scoped rules in `assets/css/extended/custom.css`. Images are copied into `static/images/competitions/` and referenced by stable site paths. A PowerShell smoke test validates generated HTML after `hugo` builds the site.
+**Architecture:** The feature is a static Hugo page at `content/competitions.html`, styled by scoped rules in `assets/css/extended/custom.css`. Images are copied into `static/images/competitions/` and referenced by stable site paths. A PowerShell smoke test validates generated HTML after `hugo` builds the site.
 
 **Tech Stack:** Hugo, PaperMod, Markdown with inline HTML, PowerShell smoke test, static image assets.
 
@@ -105,11 +105,11 @@ Expected: all eight destination files are present.
 ### Task 3: Add The Hugo Page
 
 **Files:**
-- Create: `content/competitions.md`
+- Create: `content/competitions.html`
 
 - [ ] **Step 1: Create the page**
 
-Create a standalone page with TOML front matter:
+Create a standalone HTML content page with TOML front matter:
 
 ```toml
 +++

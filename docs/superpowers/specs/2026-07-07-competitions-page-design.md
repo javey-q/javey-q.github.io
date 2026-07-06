@@ -12,7 +12,7 @@ This matches the selected visual option B. The structure keeps the timeline read
 
 ## Page Structure
 
-The new page will live as a Hugo standalone content page at `content/competitions.md`, with front matter that adds it to the main menu.
+The new page will live as a Hugo standalone content page at `content/competitions.html`, with front matter that adds it to the main menu. The HTML content format avoids Markdown treating indented raw HTML blocks as code.
 
 Top-level content:
 
