@@ -25,6 +25,10 @@ mainsections = ["posts", "papermod"]
   weight = 1
 
 [[languages.zh-cn.menu.main]]
+  name = "博客"
+  url = "posts/"
+  weight = 6
+[[languages.zh-cn.menu.main]]
   name = "标签"
   url = "tags/"
   weight = 10
@@ -56,13 +60,16 @@ mainsections = ["posts", "papermod"]
 
   [params.profileMode]
     enabled = true
-    title = "欢迎来到我的博客"
-    subtitle = "记录 | 分享 | 成长"
+    title = "Javey 的技术博客"
+    subtitle = "AI Infra · 模型推理优化 · 算法竞赛实践"
     imageUrl = "images/avatar.jpg"
     imageTitle = "头像"
     [[params.profileMode.buttons]]
-      name = "博客文章"
+      name = "博客"
       url = "/posts"
+    [[params.profileMode.buttons]]
+      name = "比赛"
+      url = "/competitions/"
     [[params.profileMode.buttons]]
       name = "关于"
       url = "/about"
