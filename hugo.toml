@@ -40,6 +40,9 @@ mainsections = ["posts", "papermod"]
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+[security]
+  allowContent = ["^text/html$"]
+
 [params]
   env = "production"
   author = "Javey"
