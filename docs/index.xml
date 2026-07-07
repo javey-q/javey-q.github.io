@@ -9,11 +9,18 @@
       <url>https://javey-q.github.io/images/papermod-cover.png</url>
       <link>https://javey-q.github.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.158.0</generator>
+    <generator>Hugo -- 0.164.0</generator>
     <language>zh-cn</language>
     <copyright>Javey</copyright>
-    <lastBuildDate>Mon, 09 Feb 2026 01:55:43 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://javey-q.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>比赛记录</title>
+      <link>https://javey-q.github.io/competitions/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0800</pubDate>
+      <guid>https://javey-q.github.io/competitions/</guid>
+      <description>算法、AI Infra、遥感与模型部署相关比赛经历。</description>
+    </item>
     <item>
       <title>关于</title>
       <link>https://javey-q.github.io/about/</link>
@@ -37,10 +44,11 @@
 &lt;li&gt;&lt;strong&gt;如何最大化单卡吞吐？Batch、多实例、MPS 分别适合什么场景？&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;实验环境&lt;/strong&gt;：NVIDIA L20, CUDA 12.x, PyTorch 2.x, 分辨率 1024×1024, 20 步（与生产环境一致）。
+&lt;p&gt;&lt;strong&gt;实验环境&lt;/strong&gt;：NVIDIA L20, CUDA 12.x, PyTorch 2.x, 分辨率 1024×1024。
 &lt;strong&gt;Baseline&lt;/strong&gt;：FP16, 20 步, 单张推理延时 &lt;strong&gt;3.9s&lt;/strong&gt;, 吞吐 &lt;strong&gt;0.256 image/s&lt;/strong&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：与前两篇不同的是， 为了更接近生产环境，本篇步数统一设置为20步。&lt;/p&gt;
 &lt;h2 id=&#34;1-混合优化组合实践&#34;&gt;1. 混合优化组合实践&lt;/h2&gt;
 &lt;h3 id=&#34;11-组合策略设计&#34;&gt;1.1 组合策略设计&lt;/h3&gt;
 &lt;p&gt;并非所有优化都能自由叠加。根据第二篇的分析，各优化作用于 Pipeline 的不同层级：&lt;/p&gt;
@@ -98,40 +106,40 @@ DeepCache          ✅            ⚠️         ⚠️       ❌
 &lt;p&gt;Stable Diffusion XL（SDXL）是 Stability AI 于 2023 年发布的旗舰级文生图模型，相较于 SD 1.5，它在图像质量、分辨率（原生支持 1024×1024）和语义理解能力上有了质的飞跃。SDXL 已成为开源社区中应用最广泛的高分辨率生成模型之一，广泛用于创意设计、电商素材生成、游戏概念图制作等场景。&lt;/p&gt;
 &lt;p&gt;然而，更强的模型能力伴随着更高的计算开销。SDXL 的参数量达到约 &lt;strong&gt;3.5B&lt;/strong&gt;（Base UNet 2.6B + Text Encoders 等），相较于 SD 1.5 的 ~0.9B，推理成本大幅增加：&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;指标&lt;/th&gt;
-          &lt;th&gt;SD 1.5&lt;/th&gt;
-          &lt;th&gt;SDXL&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;UNet 参数量&lt;/td&gt;
-          &lt;td&gt;~860M&lt;/td&gt;
-          &lt;td&gt;~2.6B&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;原生分辨率&lt;/td&gt;
-          &lt;td&gt;512×512&lt;/td&gt;
-          &lt;td&gt;1024×1024&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Text Encoder&lt;/td&gt;
-          &lt;td&gt;CLIP ViT-L/14&lt;/td&gt;
-          &lt;td&gt;CLIP ViT-L/14 + OpenCLIP ViT-bigG&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;FP32 显存占用&lt;/td&gt;
-          &lt;td&gt;~4 GB&lt;/td&gt;
-          &lt;td&gt;~18 GB&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;FP16 单次推理延时（30步）&lt;/td&gt;
-          &lt;td&gt;~1.5s&lt;/td&gt;
-          &lt;td&gt;~5.5s&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;指标&lt;/th&gt;
+					&lt;th&gt;SD 1.5&lt;/th&gt;
+					&lt;th&gt;SDXL&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;UNet 参数量&lt;/td&gt;
+					&lt;td&gt;~860M&lt;/td&gt;
+					&lt;td&gt;~2.6B&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;原生分辨率&lt;/td&gt;
+					&lt;td&gt;512×512&lt;/td&gt;
+					&lt;td&gt;1024×1024&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Text Encoder&lt;/td&gt;
+					&lt;td&gt;CLIP ViT-L/14&lt;/td&gt;
+					&lt;td&gt;CLIP ViT-L/14 + OpenCLIP ViT-bigG&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;FP32 显存占用&lt;/td&gt;
+					&lt;td&gt;~4 GB&lt;/td&gt;
+					&lt;td&gt;~18 GB&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;FP16 单次推理延时（30步）&lt;/td&gt;
+					&lt;td&gt;~1.5s&lt;/td&gt;
+					&lt;td&gt;~5.5s&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h3 id=&#34;12-优化的业务价值&#34;&gt;1.2 优化的业务价值&lt;/h3&gt;
 &lt;p&gt;在生产环境中，推理性能直接决定了：&lt;/p&gt;
