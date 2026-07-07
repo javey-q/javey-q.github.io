@@ -395,7 +395,7 @@ Layer 4: 吞吐工程优化
 
 在开始优化之前，我们首先建立一个合理的 Baseline 并记录各项指标。
 
-### 4.1 FP32 Baseline
+### FP32 Baseline
 
 ```python
 from diffusers import StableDiffusionXLPipeline
@@ -414,40 +414,6 @@ image = pipe(prompt, num_inference_steps=30, guidance_scale=7.5).images[0]
 |------|------|--------|----------|---------------|-----------|
 | FP32 | 30 | 1024 | 16.3 | 1.84 | 18.08 |
 | FP32 | 50 | 1024 | 26.9 | 1.85 | 18.07 |
-
-### 4.2 FP16 Baseline（后续对比基准）
-
-```python
-pipe = StableDiffusionXLPipeline.from_pretrained(
-    "stabilityai/stable-diffusion-xl-base-1.0",
-    torch_dtype=torch.float16,
-    variant="fp16"
-).to("cuda")
-```
-
-| 配置 | 步长 | 分辨率 | 延时（s） | 速度（step/s） | 显存（GB） | 加速比 |
-|------|------|--------|----------|---------------|-----------|--------|
-| FP32 | 30 | 1024 | 16.3 | 1.84 | 18.08 | 1× |
-| FP16 | 30 | 1024 | 5.5 | 5.45 | 11.24 | <span class="metric-speedup">**2.96×**</span> |
-| FP32 | 50 | 1024 | 26.9 | 1.85 | 18.07 | 1× |
-| FP16 | 50 | 1024 | 8.7 | 5.74 | 11.24 | <span class="metric-speedup">**3.09×**</span> |
-
-FP16 带来了接近 **3 倍** 的加速和 **38%** 的显存节省，且图片质量几乎无损。这是最基本也是收益最高的优化。
-
-> **后续所有实验均以 FP16 作为 Baseline**（30 步，1024×1024，延时 5.5s，显存 11.24GB）。
-
-### 4.3 其他精度格式对比
-
-| 精度 | 延时（s） | 速度（step/s） | 显存（GB） | 加速比 | 建议 |
-|------|----------|---------------|-----------|--------|------|
-| FP32 | 16.3 | 1.84 | 18.08 | 1× | 仅用于调试 |
-| TF32 | 12.4 | 2.41 | 18.08 | <span class="metric-speedup">1.31×</span> | 不推荐（加速有限） |
-| FP16 | 5.5 | 5.45 | 11.24 | <span class="metric-speedup">2.96×</span> | **推荐作为默认** |
-| BF16 | 5.4 | 5.55 | 9.62 | <span class="metric-speedup">3.01×</span> | 可选（显存更低） |
-
-> **TF32** 的加速效果远不如 FP16/BF16，因为它仅改变了 Tensor Core 的计算精度，没有减少内存带宽消耗。在 L20 上不建议使用。
->
-> **BF16** 与 FP16 速度接近，但显存更低（9.62 vs 11.24 GB），适合显存紧张的场景。
 
 ---
 
