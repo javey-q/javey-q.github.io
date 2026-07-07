@@ -41,7 +41,7 @@ mainsections = ["posts", "papermod"]
   home = ["HTML", "RSS", "JSON"]
 
 [security]
-  allowContent = ["^text/html$"]
+  allowContent = ["^text/html$", "^text/markdown$"]
 
 [params]
   env = "production"

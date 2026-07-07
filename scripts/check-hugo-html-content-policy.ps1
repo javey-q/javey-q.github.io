@@ -5,16 +5,31 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$htmlContentFiles = Get-ChildItem -LiteralPath $ContentDir -Recurse -File -Filter "*.html" -ErrorAction SilentlyContinue
-if (-not $htmlContentFiles) {
-  Write-Host "No HTML content files found."
+$contentFiles = Get-ChildItem -LiteralPath $ContentDir -Recurse -File -ErrorAction SilentlyContinue |
+  Where-Object { $_.Extension -in @(".html", ".htm", ".md", ".markdown", ".mdown") }
+
+if (-not $contentFiles) {
+  Write-Host "No checked content files found."
   exit 0
 }
 
 $config = Get-Content -Raw -LiteralPath $ConfigPath
-if ($config -notmatch '(?s)\[security\].*allowContent\s*=\s*\[[^\]]*(\^?text/html\$?)[^\]]*\]') {
-  $files = ($htmlContentFiles | ForEach-Object { $_.FullName }) -join ", "
-  throw "HTML content files require Hugo security.allowContent to include text/html. Files: $files"
+$requiredMediaTypes = [ordered]@{}
+foreach ($file in $contentFiles) {
+  if ($file.Extension -in @(".html", ".htm")) {
+    $requiredMediaTypes["text/html"] = $true
+  }
+  if ($file.Extension -in @(".md", ".markdown", ".mdown")) {
+    $requiredMediaTypes["text/markdown"] = $true
+  }
 }
 
-Write-Host "Hugo HTML content policy check passed."
+foreach ($mediaType in $requiredMediaTypes.Keys) {
+  $escaped = [regex]::Escape($mediaType)
+  if ($config -notmatch "(?s)\[security\].*allowContent\s*=\s*\[[^\]]*$escaped[^\]]*\]") {
+    $files = ($contentFiles | ForEach-Object { $_.FullName }) -join ", "
+    throw "Content files require Hugo security.allowContent to include $mediaType. Files: $files"
+  }
+}
+
+Write-Host "Hugo content policy check passed."
