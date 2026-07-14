@@ -190,6 +190,21 @@ html[data-theme="dark"] .metric-slowdown {
   font-size: 0.82rem;
 }
 
+.competition-link {
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--competition-accent);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  color: var(--competition-accent);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.competition-link:hover {
+  background: var(--competition-accent);
+  color: var(--theme);
+}
+
 .competition-sources {
   margin: 0.85rem 0 0;
   color: var(--competition-muted);
