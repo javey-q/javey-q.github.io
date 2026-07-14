@@ -12,20 +12,27 @@
     <generator>Hugo -- 0.164.0</generator>
     <language>zh-cn</language>
     <copyright>Javey</copyright>
-    <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://javey-q.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inference</title>
+      <link>https://javey-q.github.io/categories/inference/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://javey-q.github.io/categories/inference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>竞赛</title>
+      <link>https://javey-q.github.io/categories/%E7%AB%9E%E8%B5%9B/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://javey-q.github.io/categories/%E7%AB%9E%E8%B5%9B/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Diffusion</title>
       <link>https://javey-q.github.io/categories/diffusion/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://javey-q.github.io/categories/diffusion/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Inference</title>
-      <link>https://javey-q.github.io/categories/inference/</link>
-      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://javey-q.github.io/categories/inference/</guid>
       <description></description>
     </item>
   </channel>

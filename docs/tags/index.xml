@@ -12,8 +12,43 @@
     <generator>Hugo -- 0.164.0</generator>
     <language>zh-cn</language>
     <copyright>Javey</copyright>
-    <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://javey-q.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FlashAttention</title>
+      <link>https://javey-q.github.io/tags/flashattention/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://javey-q.github.io/tags/flashattention/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MindSpore</title>
+      <link>https://javey-q.github.io/tags/mindspore/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://javey-q.github.io/tags/mindspore/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>模型迁移</title>
+      <link>https://javey-q.github.io/tags/%E6%A8%A1%E5%9E%8B%E8%BF%81%E7%A7%BB/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://javey-q.github.io/tags/%E6%A8%A1%E5%9E%8B%E8%BF%81%E7%A7%BB/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>昇腾</title>
+      <link>https://javey-q.github.io/tags/%E6%98%87%E8%85%BE/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://javey-q.github.io/tags/%E6%98%87%E8%85%BE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>推理优化</title>
+      <link>https://javey-q.github.io/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://javey-q.github.io/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Stable Diffusion</title>
       <link>https://javey-q.github.io/tags/stable-diffusion/</link>
@@ -26,13 +61,6 @@
       <link>https://javey-q.github.io/tags/tensorrt/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://javey-q.github.io/tags/tensorrt/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>推理优化</title>
-      <link>https://javey-q.github.io/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/</link>
-      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://javey-q.github.io/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/</guid>
       <description></description>
     </item>
   </channel>
